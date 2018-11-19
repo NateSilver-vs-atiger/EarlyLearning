@@ -6,6 +6,7 @@ import os
 import pandas_profiling as ppd
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import (StandardScaler, MinMaxScaler, RobustScaler)
+from sklearn.linear_model import LinearRegression
 
 os.chdir("C://Users/Stacy/Documents/Eric's Courses/KaggleHousePrices/")
 
@@ -57,3 +58,17 @@ dummies_train = pd.get_dummies(dummies_train)
 
 dummies_test = scaled_test
 dummies_test = pd.get_dummies(dummies_test)
+
+dummies_train.drop(columns = 'Id')
+dummies_test.drop(columns = 'Id')
+
+missing_cols = set(dummies_train.columns) - set(dummies_test.columns)
+for c in missing_cols:
+    dummies_test[c] = 0
+
+X_train = 
+
+
+linreg = LinearRegression()
+linreg.fit(dummies_train)
+linreg.predict(dummies_test[0])
